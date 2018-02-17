@@ -31,13 +31,15 @@ $(document).on("click", "p", function() {
       $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
       $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
-      $("#notes").append(`<a id="deletenote" href="#" data-id="${data._id}">Delete</a>`);
+      $("#notes").append(`<a id="deletenote" href="#" data-article-id="${data._id}">Delete</a>`);
       // If there's a note in the article
       if (data.note) {
         // Place the title of the note in the title input
         $("#titleinput").val(data.note.title);
         // Place the body of the note in the body textarea
         $("#bodyinput").val(data.note.body);
+        //add note id
+        $("#deletenote").attr("data-note-id", data.note._id);
       }
     });
 });
@@ -69,4 +71,27 @@ $(document).on("click", "#savenote", function() {
   // Also, remove the values entered in the input and textarea for note entry
   $("#titleinput").val("");
   $("#bodyinput").val("");
+});
+
+$("#scrapenow").on("click", function(event){
+  $.ajax({
+    method:"GET",
+    url: "/scrape"
+  }
+  ).then( function(){
+    location.reload();
+  });
+});
+
+$(document).on("click", "#deletenote", function(event) {
+  event.preventDefault();
+  //console.log(event);
+  console.log( $(this).attr("data-note-id") );
+  $.ajax({
+    method:"DELETE",
+    url: `/note/${$(this).attr("data-note-id")}`
+  }
+  ).then( function(){
+    location.reload();
+  });
 });

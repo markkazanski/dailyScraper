@@ -126,8 +126,12 @@ app.post("/articles/:id", function(req, res) {
     });
 });
 
-app.delete("note/:id", function(req, res){
-  
+app.delete("/note/:id", function(req, res){
+  console.log( "DELTE called" + req.params.id );
+  db.Note.findByIdAndRemove({ _id: req.params.id }).then(function(dbDeleted){
+    res.json(dbDeleted);
+  });
+
 });
 
 // Start the server
