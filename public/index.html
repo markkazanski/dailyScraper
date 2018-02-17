@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <title>Scraping With Mongoose</title>
-    <style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!--<style>
       body { background-color: #F2F6D0 }
       #wrapper {
         width: 960px;
@@ -34,16 +35,42 @@
         height: 200px;
         font-size: 18px;
       }
-    </style>
+    </style>-->
   </head>
   <body>
-    <div id="wrapper">
+
+<div class="container-fluid">
+  <div class="container">
+  <div class="row">
+    <div class="col-12">
+    <div class="jumbotron text-center" style="background-color:#ff0000;">
+      <h1 style="color:#fff;">Jacobin Article Scraper</h1>
+      <p class="text-center"><img width="200" height="82" src="https://jacobinmag.com/static/img/logo/logo-type.png" alt="Jacobin" /></p>
       <button id="scrapenow">Scrape Now</button>
-      <h1>Note Scraper</h1>
-      <h2><i>If you can do this...the homework should be no problem.</i></h2>
-      <div id="articles"></div>
-      <div id="notes"></div>
     </div>
+    </div>
+  </div>
+
+  <div class="row">
+  
+    <div class="col-4">
+        <div class="jumbotron">
+            <h2>Notes</h2>
+        </div>
+        <div id="notes"></div>
+    </div>
+
+    <div class="col-8">
+        <div class="jumbotron">
+            <h2>Articles</h2>
+        </div>
+        <div id="articles"></div>
+    </div>
+
+  </div><!--END row-->
+  </div>
+</div><!--END FLUID CONT-->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="app.js"></script>
   </body>
